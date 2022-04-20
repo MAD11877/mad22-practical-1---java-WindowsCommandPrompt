@@ -51,33 +51,45 @@ public class Question5
 		
 		//convert the arrayList into a hashSet
 		
-		Object[] objArr = newHashSet.toArray(); 
+		String[] objArr = newHashSet.toArray(new String[newHashSet.size()]); 
 		
 		for (int i = 0; i < objArr.length; i++) {
 			newHashMap.put((String) objArr[i], 1); 
 		}
 		
-		HashSet<String> keys = new HashSet<String>(newHashMap.keySet()); //store the keys in a set. 
-		Object[] tempKeys = keys.toArray(); 
-		HashSet<Object> values = new HashSet<Object>(newHashMap.values()); //store the values in a set.
-		Object[] tempValues = values.toArray(); 
-		int pos = 0; 
+		ArrayList<String> keys = new ArrayList<String>(newHashMap.keySet()); //store the keys in a set. 
+		ArrayList<Integer> values = new ArrayList<Integer>(newHashMap.values()); //store the values in a set.
+		int pos = 0;
+		int target1; 
 		
 		for (int i = 0; i < a.size(); i++) {
 			if (i + 1 < a.size()) {
 				if (a.get(i).equals(a.get(i + 1))) {
-					for (int j = 0; j < tempKeys.length; j++) {
-						if (tempKeys[j] == a.get(i)) { //get the index position of the target index in the Object[] 
-							
-							
-							
-						}
+					for (int j = 0; j < keys.size(); j++) {
+						for (int k = 0; k < objArr.length; k++) {
+							if (keys.get(j) == objArr[k]) { //get the index position of the target index in the Object[] 
+								pos = keys.indexOf(keys.get(j)); 
+							}
+						} 
 					}
+					target1 = values.get(pos); 
+					target1++; 
+					values.set(pos,  target1++);
 				}
 			}
 		} 
 		
-		System.out.println(pos); 
+		//run a for loop through Object[] tempValues again.  
+		for(int i = 0; i < values.size(); i++) {
+			System.out.println(values.get(i)); 
+		}
+		
+		//System.out.println(objArr.length); 
+		
+		
+		/*
+		 * foreach(KeyValuePair<string, int> k in kvp) Console.WriteLine(k); 
+		 */
   }
   
   public static Object FindMax(int[] a) {
