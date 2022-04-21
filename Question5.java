@@ -58,21 +58,24 @@ public class Question5
 		
 		ArrayList<String> keys = new ArrayList<String>(newHashMap.keySet()); //store the keys in a set. 
 		ArrayList<Integer> values = new ArrayList<Integer>(newHashMap.values()); //store the values in a set.
-		int pos = 0;
 		int target1; 
-		
-		for (int i = 0; i < a.size(); i++) {
-			if (i + 1 < a.size()) {
-				if (a.get(i).equals(a.get(i + 1))) {
-					for (int j = 0; j < keys.size(); j++) {
-						if (keys.get(j) == a.get(i)) { //get the index position of the target index in the Object[] 
-							pos = keys.indexOf(keys.get(j)); //same index
-							values.set(pos,  values.get(pos) + 1);
+	        
+	        do { 
+			for (int i = 0; i < a.size(); i++) {
+				if (i + 1 < a.size()) {
+					if (a.get(i).equals(a.get(i + 1))) {
+						for (int j = 0; j < keys.size(); j++) {
+							if (keys.get(j) == a.get(i)) { //get the index position of the target index in the Object[] 
+								pos = keys.indexOf(keys.get(j)); //same index
+								values.set(pos,  values.get(pos) + 1);
+							} 
 						} 
-					} 
+					}
 				}
-			}
+				a.remove(a.get(i)); 
+			} 
 		} 
+	        while(!a.isEmpty()); 
 		
 		ArrayList<Integer> n = new ArrayList<Integer>(); 
 		
@@ -83,34 +86,39 @@ public class Question5
 		}
 		
 		//FindMax(ArrayList<Integer> a) returns the highest occurrence 
-		System.out.print("The highest occurrence of a particular element in the array is " + FindMax(n) + " times and that element is ");
+		if (FindMax(n) != "No mode") {
+			System.out.print("The highest occurrence of a particular element in the array is " + FindMax(n) + " times and that element is: " + item);
+		} 
+		else {
+			System.out.print("There is no mode.");
+		}
   }
   
-  public static Object FindMax(int[] a) {
+public static Object FindMax(ArrayList<Integer> a) {
 		int max = 0; 
-		for (int i = 0; i < a.length; i++) {
-			if (i + 1 < a.length) {
-				if (a[i + 1] > a[i]) {
-					max = a[i + 1]; 
+		for (int i = 0; i < a.size(); i++) {
+			if (i + 1 < a.size()) {
+				if (a.get(i + 1) > a.get(i)) {
+					max = a.get(i + 1); 
 					//compare last element with second last element... 
-					if (max > a[a.length - 1]) {
+					if (max > a.get(a.size() - 1)) {
 						return max; 
 					}
 					else {
-						return a[a.length - 1]; 
+						return a.get(a.size() - 1); 
 					}
 				}
-				else if (a[i + 1] == a[i]){
+				else if (a.get(i + 1) == a.get(i)) {
 					return "No mode"; 
-				} 
+				}
 				else {
-					max = a[i]; 
+					max = a.get(i); 
 					//compare last element with second last element... 
-					if (max > a[a.length - 1]) {
+					if (max > a.get(a.size() - 1)) {
 						return max;
 					}
 					else {
-						return a[a.length - 1]; 
+						return a.get(a.size() - 1); 
 					}
 				}
 			}
