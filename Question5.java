@@ -27,8 +27,7 @@ public class Question5
      */
      
     Scanner scr = new Scanner(System.in);
-    
-    //find the highest occurrences of an element within an array.... 
+//find the highest occurrences of an element within an array.... 
 		ArrayList<String> a = new ArrayList<String>(); 
 		HashMap<String, Integer> newHashMap = new HashMap<String, Integer>(); 
 		HashSet<String> newHashSet = new HashSet<String>(); 
@@ -66,30 +65,25 @@ public class Question5
 			if (i + 1 < a.size()) {
 				if (a.get(i).equals(a.get(i + 1))) {
 					for (int j = 0; j < keys.size(); j++) {
-						for (int k = 0; k < objArr.length; k++) {
-							if (keys.get(j) == objArr[k]) { //get the index position of the target index in the Object[] 
-								pos = keys.indexOf(keys.get(j)); 
-							}
+						if (keys.get(j) == a.get(i)) { //get the index position of the target index in the Object[] 
+							pos = keys.indexOf(keys.get(j)); //same index
+							values.set(pos,  values.get(pos) + 1);
 						} 
-					}
-					target1 = values.get(pos); 
-					target1++; 
-					values.set(pos,  target1++);
+					} 
 				}
 			}
 		} 
 		
+		ArrayList<Integer> n = new ArrayList<Integer>(); 
+		
 		//run a for loop through Object[] tempValues again.  
 		for(int i = 0; i < values.size(); i++) {
-			System.out.println(values.get(i)); 
+			n.add(values.get(i)); 
+			System.out.println(values.get(i));
 		}
 		
-		//System.out.println(objArr.length); 
-		
-		
-		/*
-		 * foreach(KeyValuePair<string, int> k in kvp) Console.WriteLine(k); 
-		 */
+		//FindMax(ArrayList<Integer> a) returns the highest occurrence 
+		System.out.print("The highest occurrence of a particular element in the array is " + FindMax(n) + " times and that element is ");
   }
   
   public static Object FindMax(int[] a) {
@@ -106,6 +100,9 @@ public class Question5
 						return a[a.length - 1]; 
 					}
 				}
+				else if (a[i + 1] == a[i]){
+					return "No mode"; 
+				} 
 				else {
 					max = a[i]; 
 					//compare last element with second last element... 
@@ -118,9 +115,9 @@ public class Question5
 				}
 			}
 			else {
-				return "No max"; 
+				return "No mode"; 
 			}
 		}
-		return "No max"; 
+		return "No mode"; 
 	}
 }
