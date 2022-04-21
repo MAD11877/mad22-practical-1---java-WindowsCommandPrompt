@@ -66,8 +66,7 @@ public class Question5
 					if (a.get(i).equals(a.get(i + 1))) {
 						for (int j = 0; j < keys.size(); j++) {
 							if (keys.get(j) == a.get(i)) { //get the index position of the target index in the Object[] 
-								pos = keys.indexOf(keys.get(j)); //same index
-								values.set(pos,  values.get(pos) + 1);
+								values.set(j,  values.get(j) + 1);
 							} 
 						} 
 					}
