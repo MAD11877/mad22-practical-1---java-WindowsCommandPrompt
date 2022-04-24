@@ -33,6 +33,7 @@ public class Question5
 		HashSet<String> newHashSet = new HashSet<String>(); 
 		int counter, response; 
 		int target = 0; 
+	        String item = null; 
 		
 		System.out.print("Please enter the number of elements that would be entered into a list: ");
 		
@@ -98,7 +99,7 @@ public class Question5
 		ArrayList<Integer> n = new ArrayList<Integer>(); 
 		
 		//run a for loop through Object[] tempValues again.  
-		for(int i = 0; i < values.size(); i++) {
+		for(i = 0; i < values.size(); i++) {
 			n.add(values.get(i)); 
 			System.out.println(values.get(i));
 		}
