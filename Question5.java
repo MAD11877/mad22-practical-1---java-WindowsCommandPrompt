@@ -58,23 +58,41 @@ public class Question5
 		
 		ArrayList<String> keys = new ArrayList<String>(newHashMap.keySet()); //store the keys in a set. 
 		ArrayList<Integer> values = new ArrayList<Integer>(newHashMap.values()); //store the values in a set.
-		int target1; 
+		int i; 
 	        
-	        do { 
-			for (int i = 0; i < a.size(); i++) {
-				if (i + 1 < a.size()) {
-					if (a.get(i).equals(a.get(i + 1))) {
-						for (int j = 0; j < keys.size(); j++) {
-							if (keys.get(j) == a.get(i)) { //get the index position of the target index in the Object[] 
-								values.set(j,  values.get(j) + 1);
+		//unexpected fault occurred at infinite loop. 
+		//PROBLEM: VALUE STUCK AT 2 
+		for(;;) { 
+			for (i = 0; i < a.size(); i++) {
+				if (i + 1 < a.size()) { //prevent the index out of range 
+					if (a.get(i).equals(a.get(i + 1))) { //equal string found... 
+						for (String k : keys) { //loop through the arrayList named 'keys' 
+							if (k.equals(a.get(i))) { //get the index position of the target index in the Object[] 
+								int val = values.get(keys.indexOf(k)); 
+								val = val + 1; 
+								values.set(keys.indexOf(k), val); 
+								targetIndex = i; 
+								a.remove(targetIndex); 
+								break; 
 							} 
 						} 
 					}
+					else {   //!a.get(i).equals(a.get(i + 1)) 
+						targetIndex = i;
+						a.remove(targetIndex); 
+						break; 
+					}
+				} 
+				else {
+					targetIndex = i; 
+					a.remove(targetIndex); 
+					break; 
 				}
-				a.remove(a.get(i)); 
 			} 
-		} 
-	        while(!a.isEmpty()); 
+			if (a.size() == 0) {
+				break; 
+			}
+		}
 		
 		ArrayList<Integer> n = new ArrayList<Integer>(); 
 		
