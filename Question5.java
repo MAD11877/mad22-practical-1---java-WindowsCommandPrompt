@@ -62,9 +62,8 @@ public class Question5
 		int i; 
 	        int targetIndex = 0; 
 	        
-		//unexpected fault occurred at infinite loop. 
-		//PROBLEM: VALUE STUCK AT 2 
 		for(;;) { 
+			A: //add a label and set it to 'A'
 			for (i = 0; i < a.size(); i++) {
 				if (i + 1 < a.size()) { //prevent the index out of range 
 					if (a.get(i).equals(a.get(i + 1))) { //equal string found... 
@@ -72,27 +71,25 @@ public class Question5
 							if (k.equals(a.get(i))) { //get the index position of the target index in the Object[] 
 								targetIndex = i; 
 								a.remove(targetIndex); 
-								int val = values.get(keys.indexOf(k)); 
-								val = val + 1; 
-								values.set(keys.indexOf(k), val); 
-								break; 
+								values.set(keys.indexOf(k), values.get(keys.indexOf(k)) + 1);  //set it back 
+								break A; //go back to A
 							} 
 						} 
 					}
 					else {   //!a.get(i).equals(a.get(i + 1)) 
 						targetIndex = i;
 						a.remove(targetIndex); 
-						break; 
+						break A; //go back to A and repeat
 					}
 				} 
 				else {
 					targetIndex = i; 
 					a.remove(targetIndex); 
-					break; 
+					break A; //go back to A and repeat 
 				}
 			} 
 			if (a.size() == 0) {
-				break; 
+				break; //end for(;;) 
 			}
 		}
 		
@@ -101,8 +98,10 @@ public class Question5
 		//run a for loop through Object[] tempValues again.  
 		for(i = 0; i < values.size(); i++) {
 			n.add(values.get(i)); 
-			System.out.println(values.get(i));
 		}
+	  
+	  //print to console. THE ARRAY 
+	  	System.out.println(values.get(i));
 		
 		//FindMax(ArrayList<Integer> a) returns the highest occurrence 
 		if (FindMax(n) != -1) {
