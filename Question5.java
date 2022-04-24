@@ -59,6 +59,7 @@ public class Question5
 		ArrayList<String> keys = new ArrayList<String>(newHashMap.keySet()); //store the keys in a set. 
 		ArrayList<Integer> values = new ArrayList<Integer>(newHashMap.values()); //store the values in a set.
 		int i; 
+	        int targetIndex = 0; 
 	        
 		//unexpected fault occurred at infinite loop. 
 		//PROBLEM: VALUE STUCK AT 2 
