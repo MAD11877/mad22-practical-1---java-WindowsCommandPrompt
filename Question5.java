@@ -103,7 +103,9 @@ public class Question5
 		}
 		
 		//FindMax(ArrayList<Integer> a) returns the highest occurrence 
-		if (FindMax(n) != "No mode") {
+		if (FindMax(n) != -1) {
+			int ab = n.indexOf(FindMax(n)); //location of the highest value in the array. 
+			item = keys.get(ab); //get the item from the keys
 			System.out.print("The highest occurrence of a particular element in the array is " + FindMax(n) + " times and that element is: " + item);
 		} 
 		else {
@@ -111,7 +113,7 @@ public class Question5
 		}
   }
   
-public static Object FindMax(ArrayList<Integer> a) {
+public static Integer FindMax(ArrayList<Integer> a) {
 		int max = 0; 
 		for (int i = 0; i < a.size(); i++) {
 			if (i + 1 < a.size()) {
@@ -126,7 +128,7 @@ public static Object FindMax(ArrayList<Integer> a) {
 					}
 				}
 				else if (a.get(i + 1) == a.get(i)) {
-					return "No mode"; 
+					return -1; 
 				}
 				else {
 					max = a.get(i); 
@@ -139,10 +141,12 @@ public static Object FindMax(ArrayList<Integer> a) {
 					}
 				}
 			}
-			else {
-				return "No mode"; 
-			}
+
 		}
-		return "No mode"; 
+		if (a.size() == 1) {
+			max = a.get(a.size() - 1);
+			return max; 
+		}
+		return -1; 
 	}
 }
