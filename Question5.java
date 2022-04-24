@@ -68,11 +68,11 @@ public class Question5
 					if (a.get(i).equals(a.get(i + 1))) { //equal string found... 
 						for (String k : keys) { //loop through the arrayList named 'keys' 
 							if (k.equals(a.get(i))) { //get the index position of the target index in the Object[] 
+								targetIndex = i; 
+								a.remove(targetIndex); 
 								int val = values.get(keys.indexOf(k)); 
 								val = val + 1; 
 								values.set(keys.indexOf(k), val); 
-								targetIndex = i; 
-								a.remove(targetIndex); 
 								break; 
 							} 
 						} 
