@@ -14,7 +14,7 @@ public class Question3
     //Reads the integer entered by the user, multiplies by itself and then prints out the result... 
 	System.out.print("Please enter a number: ");
 	double num = scr.nextDouble(); 
-	double result = Math.pow(num, num); 
+	double result = Math.pow(num, 2); 
 	System.out.println("The result when the number is multiplied by itself is: " + result); 
   }
 }
