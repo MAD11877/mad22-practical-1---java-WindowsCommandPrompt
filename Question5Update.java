@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.*;
 import java.util.function.*; 
 
-public class Program { 
+public class Question5Update { 
     public static void main(String[] args) {
         try (Scanner scr = new Scanner(System.in)){ 
             System.out.print("Enter the number of entries (Greater than or equal to 0): "); 
